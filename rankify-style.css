@@ -1,0 +1,266 @@
+@layer reset, theme, global, layout, components, utilities, states;
+
+@import "./lib/colors-harmony.css" layer(theme);
+
+@layer theme {
+	:root {
+		--soft: light-dark(var(--purple-100), var(--purple-900));
+		--edge: light-dark(var(--purple-400), var(--purple-700));
+		--muted: light-dark(var(--purple-700), var(--purple-400));
+		--text: light-dark(var(--purple-900), var(--purple-100));
+
+		--danger: light-dark(var(--red-700), var(--red-300));
+	}
+}
+
+@layer global {
+	@media (min-width: 768px) {
+		html {
+			font-size: 14pt;
+		}
+	}
+
+	body {
+		padding: 1lh;
+		font-family: Inter, Aptos, system-ui, sans-serif;
+		font-feature-settings: "ss01" on, "ss04" on;
+		color: var(--text);
+		background-color: var(--soft);
+		accent-color: var(--soft);
+	}
+
+	main {
+		padding: 0;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: 2.2rem;
+	}
+
+	h2 {
+		margin-block: 1lh;
+		font-size: 1.7rem;
+	}
+
+	button,
+	[type="number"],
+	textarea {
+		padding-inline: 0.75rem;
+		padding-block: 0.375rem;
+		border: 2px solid var(--edge);
+		border-radius: 0.25rem;
+		background-color: Canvas;
+		box-shadow: var(--shadow);
+	}
+
+	textarea {
+		display: block;
+		width: 100%;
+		padding-inline: 1rem;
+		padding-block: 0.75rem;
+		box-shadow: var(--shadow-lg);
+	}
+
+	button {
+		margin-block: 0.5rem;
+		padding-inline: 1.5rem;
+		padding-block: 0.75rem;
+		font-weight: 600;
+		line-height: 1.1;
+		box-shadow: var(--shadow-lg);
+
+		&:hover,
+		&:focus {
+			color: Canvas;
+			background-color: var(--text);
+			border-color: var(--text);
+			outline-color: var(--text);
+		}
+	}
+
+	footer a {
+		color: inherit;
+
+		&:hover,
+		&:focus {
+			color: Canvas;
+			background-color: CanvasText;
+			text-decoration-color: CanvasText;
+		}
+	}
+}
+
+@layer layout {
+	main {
+		width: max-content;
+		max-width: 100%;
+		margin-inline: auto;
+	}
+
+	#edit,
+	#results {
+		width: 768px;
+		max-width: 100%;
+		margin-inline: auto;
+		margin-block: 1rem;
+	}
+
+	.mode-container {
+		display: none;
+	}
+
+	.mode--edit #edit,
+	.mode--rank #rank,
+	.mode--results #results {
+		display: block;
+	}
+
+	.choice-container {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 1em;
+		width: 1200px;
+		max-width: 100%;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 640px) {
+		.choice-container {
+			flex-direction: row;
+		}
+	}
+
+	.choice-wrapper {
+		width: 100%;
+		flex: 1 1 0%;
+	}
+
+	.choice-btn {
+		width: 100%;
+		text-wrap: balance;
+	}
+
+	#clear-btn {
+		padding-block: 0.5rem;
+		font-size: 0.875rem;
+		box-shadow: none;
+
+		&:hover,
+		&:focus {
+			color: Canvas;
+			background-color: var(--danger);
+			border-color: var(--danger);
+			outline-color: var(--danger);
+		}
+	}
+}
+
+@layer layout.edit {
+	.label-lg {
+		display: block;
+		margin-block: 1lh 0.5rem;
+		font-weight: 500;
+		font-style: italic;
+	}
+
+	.label-lg+p {
+		margin-block-start: 0;
+	}
+
+	.get-started {
+		margin-block: 1lh;
+	}
+
+	#top-count-input {
+		text-align: center;
+	}
+
+	#comp-prose {
+		margin-block: 0;
+		text-wrap: balance;
+	}
+
+	@media (min-width: 767px) {
+		.get-started {
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		#comp-prose {
+			flex: 1 1 0%;
+		}
+	}
+}
+
+@layer layout.results {
+	#result-list {
+		text-wrap: balance;
+	}
+
+	#result-list li {
+		margin-block: 0.75rem;
+		padding-inline-start: 1rem;
+		color: var(--muted);
+
+		&::marker {
+			font-weight: 500;
+			color: var(--edge);
+		}
+
+		&.ranked-result {
+			font-weight: 700;
+			color: var(--text);
+		}
+	}
+
+}
+
+@layer components {
+	.radio {
+		display: inline-flex;
+		align-items: center;
+		gap: 1ch;
+		padding-block: 0.375rem;
+		padding-inline: 0.75rem;
+		background-color: Canvas;
+		border: 2px solid var(--edge);
+		border-radius: 0.25rem;
+		box-shadow: var(--shadow);
+
+		[type="radio"] {
+			margin: 0;
+			outline-color: var(--text);
+		}
+
+		&:hover,
+		&:focus-within {
+			background-color: Canvas;
+			border-color: var(--muted);
+		}
+
+		&:focus-within {
+			outline: 2px solid var(--muted);
+			outline-offset: 2px;
+		}
+
+		&:has(:checked) {
+			color: Canvas;
+			background-color: var(--text);
+			border-color: var(--text);
+		}
+	}
+}
+
+@layer utilities {
+	.text-center {
+		text-align: center;
+	}
+
+	@media (max-width: 767px) {
+		.sm\:hidden {}
+	}
+}

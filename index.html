@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="color-scheme" content="light dark">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Rankify</title>
+
+	<link rel="stylesheet" href="/lib/css/base.css">
+	<link rel="stylesheet" href="./rankify-style.css">
+
+	<link rel="icon" href="data:;">
+</head>
+
+<body class="mode--edit">
+	<main>
+		<h1>Rankify</h1>
+
+		<div class="mode-container" id="edit">
+			<h2>Welcome!</h2>
+
+			<label for="edit-textarea" class="label-lg">Enter the items you want to rank, one per line:</label>
+			<textarea id="edit-textarea" rows="10"></textarea>
+
+			<label for="top-number" class="label-lg">How many items do you want to put into order?</label>
+
+			<div class="flex">
+				<input id="top-number" type="number" value="10">
+				<div class="flex-none">
+					<label class="radio">
+						<input type="radio" value="count" name="top-by" checked>
+						Count
+					</label>
+					<label class="radio">
+						<input type="radio" value="percent" name="top-by">
+						Percent
+					</label>
+				</div>
+			</div>
+
+			<div class="get-started">
+				<p id="comp-prose"></p>
+				<button type="button" id="submit-edit">Rankify</button>
+			</div>
+		</div>
+
+		<div class="mode-container" id="rank">
+			<h2>Ranking</h2>
+
+			<p class="label-lg">Which is better?</p>
+
+			<div class="choice-container">
+				<div class="choice-wrapper" id="choice-left"></div>
+				<div class="choice-wrapper" id="choice-right"></div>
+			</div>
+
+			<div class="text-center">
+				<p>This is Choice #<output id="choice-num-output">1</output> of about <output id="choices-count-output"></output>. You've ranked <output id="ranked-output"></output> of your top <output id="top-item-output"></output> items.</p>
+
+				<p class="sm:hidden">You may also use your arrow keys to select LEFT or RIGHT.</p
+				>
+			</div>
+		</div>
+
+		<div class="mode-container" id="results">
+			<h2>Results</h2>
+			<ol id="result-list"></ol>
+		</div>
+	</main>
+
+	<footer>
+		<p id="privacy">
+			All data is kept locally in your browser. It's not a cookie, it's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">local storage</a>.
+		</p>
+
+		<button id="clear-btn">Clear all data and start over.</button>
+
+		<p>
+			<span aria-label="copyright" style="text-decoration: red line-through">&copy;</span> 2025 <a rel="dct:creator" href="https://crhallberg.com">Chris Hallberg</a>;
+
+			<!-- Apache 2.0 -->
+			<a href="https://choosealicense.com/licenses/apache-2.0/" rel="license noopener noreferrer" title="This work is licensed under the Apache License 2.0">Apache License</a>.
+
+		</p>
+	</footer>
+
+	<script type="module" src="./rankify.js"></script>
+</body>
+</html>
