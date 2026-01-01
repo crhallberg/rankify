@@ -4,8 +4,8 @@
  * @TODO: delete progress
  */
 
-import { callbackRankify } from "./lib/callback-sort.mjs";
-import el from "./lib/el.mjs";
+import { callbackRankify } from "./lib/callback-sort.module.js";
+import el from "./lib/el.module.js";
 
 // Mode: Edit
 
