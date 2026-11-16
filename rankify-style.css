@@ -1,6 +1,6 @@
 @layer reset, theme, global, layout, components, utilities, states;
 
-@import "/lib/css/base-bones.css" layer(reset);
+@import "/lib/css/bones.css" layer(reset);
 
 @layer theme {
     :root {
